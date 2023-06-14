@@ -19,7 +19,7 @@ router.get("/logout", authorization, err(auth.logout));
 
 router.get("/info", authorization, err(auth.info));
 
-router.get("/info", authorization, auth.info);
+router.get("/info", authorization, err(auth.info));
 router.get("/file/list", authorization, err(file.fileList));
 router.get("/file/download/:fileId", authorization, err(file.downloadFile));
 router.post("/file/upload", authorization, fileUpload, err(file.fileUpload));

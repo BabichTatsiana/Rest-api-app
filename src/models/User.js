@@ -3,6 +3,22 @@ const User = (sequelize, Sequelize) => {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
+    },
+    email: {
+      type: Sequelize.STRING,
+<<<<<<< HEAD
+      allowNull: true,
+=======
+>>>>>>> 6381dc4eac5d0f8799c9828adf0a38d8659aa8ad
+    },
+    phoneNumber: {
+      type: Sequelize.STRING,
+      field: "phone_number",
+<<<<<<< HEAD
+      allowNull: true,
+=======
+>>>>>>> 6381dc4eac5d0f8799c9828adf0a38d8659aa8ad
     },
     password: {
       type: Sequelize.STRING,

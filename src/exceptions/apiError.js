@@ -6,19 +6,23 @@ class ApiError extends Error {
     this.errors = errors;
   }
 
+  static invalidUserIdentifier(userId) {
+    return new ApiError(400, `User id is invalid (${userId})`);
+  }
+
   static notAuthorizedError() {
     return new ApiError(401, "User is not authorized");
   }
 
-  static userExistsError(userId) {
-    return new ApiError(400, `User ${userId} already exists`);
+  static userExistsError(identifier) {
+    return new ApiError(400, `User ${identifier} already exists`);
   }
 
-  static userNotExistsError(userId) {
-    return new ApiError(400, `User with ${userId} does not exists`);
+  static userNotExistsError(identifier) {
+    return new ApiError(400, `User ${identifier} does not exists`);
   }
 
-  static wrongPassword(userId) {
+  static wrongPassword() {
     throw new ApiError(400, `Password is not correct`);
   }
 

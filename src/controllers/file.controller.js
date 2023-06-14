@@ -18,6 +18,7 @@ class FileController {
     const fileInfo = await fileService.getFileInfo(fileId);
     res.status(200).json(fileInfo);
   }
+
   async updateFile(req, res, next) {
     const file = req.file;
     const fileId = req.params.fileId;
@@ -29,17 +30,12 @@ class FileController {
     const filePath = await fileService.getFilePath(fileId);
     res.status(200).download(filePath);
   }
-  async fileList(req, res) {
-    let { listSize = 10, page = 1 } = req.query;
-    page = parseInt(req.query.page) || 1;
-    listSize = parseInt(req.query.list_size) || 10;
 
-    try {
-      const fileList = await fileService.getFileList(page, listSize);
-      res.json(fileList);
-    } catch (error) {
-      res.status(500).json({ error: error });
-    }
+  async fileList(req, res) {
+    let page = parseInt(req.query.page) || 1;
+    let listSize = parseInt(req.query.list_size) || 10;
+    const fileList = await fileService.getFileList(page, listSize);
+    res.status(200).json(fileList);
   }
 }
 
